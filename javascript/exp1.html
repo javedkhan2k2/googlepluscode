@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Example of Cordinates to Plus Code</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script type="text/javascript" src="./openlocationcode.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var latitude = 34.537042;
+            var longitude = 69.162293;
+            // Convert the latitude and longitude to PlusCode
+            var pluscode = OpenLocationCode.encode(latitude, longitude);
+            console.log("Full Plus code: " + pluscode);
+
+            // Convert a Pluscode to Codearea, which has the latitude and longitude
+            var area = OpenLocationCode.decode(pluscode);
+            console.log("Latitude: " + area.latitudeCenter +" Longitude: "+ area.longitudeCenter);
+            
+        </script>
+    </body>
+</html>

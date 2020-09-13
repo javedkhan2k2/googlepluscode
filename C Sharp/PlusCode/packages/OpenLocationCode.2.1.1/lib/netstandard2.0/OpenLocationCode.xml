@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenLocationCode</name>
+    </assembly>
+    <members>
+        <member name="T:Google.OpenLocationCode.CodeArea">
+            <summary>
+            A square <see cref="T:Google.OpenLocationCode.GeoArea"/> for the coordinates of a decoded Open Location Code area.
+            The <see cref="P:Google.OpenLocationCode.CodeArea.CodeLength"/> of the decoded Open Location Code is also included.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.CodeArea.CodeLength">
+            <summary>
+            The length of the decoded Open Location Code.
+            </summary>
+        </member>
+        <member name="T:Google.OpenLocationCode.GeoArea">
+            <summary>
+            A rectangular area on the geographic coordinate system specified by the minimum and maximum <see cref="T:Google.OpenLocationCode.GeoPoint"/> coordinates.
+            The coordinates include the latitude and longitude of the lower left (south west) and upper right (north east) corners.
+            <para>
+            Additional properties exist to calculate the <see cref="P:Google.OpenLocationCode.GeoArea.Center"/> of the bounding box,
+            and the <see cref="P:Google.OpenLocationCode.GeoArea.LatitudeHeight"/> or <see cref="P:Google.OpenLocationCode.GeoArea.LongitudeWidth"/> area dimensions in degrees.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoArea.#ctor(Google.OpenLocationCode.GeoPoint,Google.OpenLocationCode.GeoPoint)">
+            <summary>
+            Create a new rectangular GeoArea of the provided min and max geo points.
+            </summary>
+            <param name="min">The minimum GeoPoint</param>
+            <param name="max">The maximum GeoPoint</param>
+            <exception cref="T:System.ArgumentException">If min is greater than or equal to max.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoArea.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Create a new rectangular GeoArea of the provided min and max geo coordinates.
+            </summary>
+            <param name="southLatitude">The minimum south latitude</param>
+            <param name="westLongitude">The minimum west longitude</param>
+            <param name="northLatitude">The maximum north latitude</param>
+            <param name="eastLongitude">The maximum east longitude</param>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.Min">
+            <summary>
+            The min (south west) point coordinates of the area bounds.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.Max">
+            <summary>
+            The max (north east) point coordinates of the area bounds.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.Center">
+            <summary>
+            The center point of the area which is equidistant between <see cref="P:Google.OpenLocationCode.GeoArea.Min"/> and <see cref="P:Google.OpenLocationCode.GeoArea.Max"/>.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.LongitudeWidth">
+            <summary>
+            The width of the area in longitude degrees.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.LatitudeHeight">
+            <summary>
+            The height of the area in latitude degrees.
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.SouthLatitude">
+            <summary>The south (min) latitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Min"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Latitude">Latitude</see></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.WestLongitude">
+            <summary>The west (min) longitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Min"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Longitude">Longitude</see></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.NorthLatitude">
+            <summary>The north (max) latitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Max"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Latitude">Latitude</see></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.EastLongitude">
+            <summary>The east (max) longitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Max"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Longitude">Longitude</see></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.CenterLatitude">
+            <summary>The center latitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Center"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Latitude">Latitude</see></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoArea.CenterLongitude">
+            <summary>The center longitude coordinate in decimal degrees.</summary>
+            <remarks>Alias to <see cref="P:Google.OpenLocationCode.GeoArea.Center"/>.<see cref="P:Google.OpenLocationCode.GeoPoint.Longitude">Longitude</see></remarks>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoArea.Contains(Google.OpenLocationCode.GeoPoint)">
+            <returns><c>true</c> if this geo area contains the provided point, <c>false</c> otherwise.</returns>
+            <param name="point">The point coordinates to check.</param>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoArea.Contains(System.Double,System.Double)">
+            <returns><c>true</c> if this geo area contains the provided point, <c>false</c> otherwise.</returns>
+            <param name="latitude">The latitude coordinate of the point to check.</param>
+            <param name="longitude">The longitude coordinate of the point to check.</param>
+        </member>
+        <member name="T:Google.OpenLocationCode.GeoPoint">
+            <summary>
+            A point on the geographic coordinate system specified by latitude and longitude coordinates in degrees.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.#ctor(System.Double,System.Double)">
+            <param name="latitude">The latitude coordinate in decimal degrees.</param>
+            <param name="longitude">The longitude coordinate in decimal degrees.</param>
+            <exception cref="T:System.ArgumentException">If latitude is out of range -90 to 90.</exception>
+            <exception cref="T:System.ArgumentException">If longitude is out of range -180 to 180.</exception>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoPoint.Latitude">
+            <summary>
+            The latitude coordinate in decimal degrees (y axis).
+            </summary>
+        </member>
+        <member name="P:Google.OpenLocationCode.GeoPoint.Longitude">
+            <summary>
+            The longitude coordinate in decimal degrees (x axis).
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.ToString">
+            <returns>A human readable representation of this GeoPoint coordinates.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.GetHashCode">
+            <returns>The hash code for this GeoPoint coordinates.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.Equals(System.Object)">
+            <inheritdoc />
+            <summary>
+            Determines whether the provided object is a GeoPoint with the same
+            <see cref="P:Google.OpenLocationCode.GeoPoint.Latitude"/> and <see cref="P:Google.OpenLocationCode.GeoPoint.Longitude"/> as this GeoPoint.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.Equals(Google.OpenLocationCode.GeoPoint)">
+            <inheritdoc />
+            <summary>
+            Determines whether the provided GoePoint has the same
+            <see cref="P:Google.OpenLocationCode.GeoPoint.Latitude"/> and <see cref="P:Google.OpenLocationCode.GeoPoint.Longitude"/> as this GeoPoint.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.op_Equality(Google.OpenLocationCode.GeoPoint,Google.OpenLocationCode.GeoPoint)">
+            <summary>Equality comparison of 2 GeoPoint coordinates.</summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.GeoPoint.op_Inequality(Google.OpenLocationCode.GeoPoint,Google.OpenLocationCode.GeoPoint)">
+            <summary>Inequality comparison of 2 Geopoint coordinates.</summary>
+        </member>
+        <member name="T:Google.OpenLocationCode.OpenLocationCode">
+            <summary>
+            Convert locations to and from convenient codes known as Open Location Codes
+            or <see href="https://plus.codes/">Plus Codes</see>
+            <para>
+            Open Location Codes are short, ~10 character codes that can be used instead of street
+            addresses. The codes can be generated and decoded offline, and use a reduced character set that
+            minimises the chance of codes including words.
+            </para>
+            The <see href="https://github.com/google/open-location-code/blob/master/API.txt">Open Location Code API</see>
+            is implemented through the static methods:
+            <list type="bullet">
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.IsValid(System.String)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.IsShort(System.String)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.IsFull(System.String)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.Encode(System.Double,System.Double,System.Int32)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.Decode(System.String)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.String,System.Double,System.Double)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.RecoverNearest(System.String,System.Double,System.Double)"/></item>
+            </list>
+            Additionally an object type is provided which can be created using the constructors:
+            <list type="bullet">
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.String)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.Double,System.Double,System.Int32)"/></item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.#ctor(System.String)"/></item>
+            </list>
+            <example><code>
+            OpenLocationCode code = new OpenLocationCode("7JVW52GR+2V");
+            OpenLocationCode code = new OpenLocationCode(27.175063, 78.042188);
+            OpenLocationCode code = new OpenLocationCode(27.175063, 78.042188, 11);
+            OpenLocationCode.ShortCode shortCode = new OpenLocationCode.ShortCode("52GR+2V");
+            </code></example>
+            
+            With a code object you can invoke the various methods such as to shorten the code
+            or decode the <see cref="T:Google.OpenLocationCode.CodeArea"/> coordinates.
+            <example><code>
+            OpenLocationCode.ShortCode shortCode = code.shorten(27.176, 78.05);
+            OpenLocationCode recoveredCode = shortCode.recoverNearest(27.176, 78.05);
+            
+            CodeArea codeArea = code.decode()
+            </code></example>
+            </summary>
+        </member>
+        <member name="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionNormal">
+            <summary>
+            Provides a normal precision code, approximately 14x14 meters.<br/>
+            Used to specify encoded code length (<see cref="M:Google.OpenLocationCode.OpenLocationCode.Encode(System.Double,System.Double,System.Int32)"/>)
+            </summary>
+        </member>
+        <member name="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionExtra">
+            <summary>
+            Provides an extra precision code length, approximately 2x3 meters.<br/>
+            Used to specify encoded code length (<see cref="M:Google.OpenLocationCode.OpenLocationCode.Encode(System.Double,System.Double,System.Int32)"/>)
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.String)">
+            <summary>
+            Creates an <see cref="T:Google.OpenLocationCode.OpenLocationCode"/> object for the provided full code (or <see cref="P:Google.OpenLocationCode.OpenLocationCode.CodeDigits"/>).
+            Use <see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.#ctor(System.String)"/> for short codes.
+            </summary>
+            <param name="code">A valid full Open Location Code or <see cref="P:Google.OpenLocationCode.OpenLocationCode.CodeDigits"/></param>
+            <exception cref="T:System.ArgumentException">If the code is null, not valid, or not full.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.Double,System.Double,System.Int32)">
+            <summary>
+            Creates an <see cref="T:Google.OpenLocationCode.OpenLocationCode"/> object encoded from the provided latitude/longitude coordinates
+            and having the provided code length (precision).
+            </summary>
+            <param name="latitude">The latitude coordinate in decimal degrees.</param>
+            <param name="longitude">The longitude coordinate in decimal degrees.</param>
+            <param name="codeLength">The number of digits in the code (Default: <see cref="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionNormal"/>).</param>
+            <exception cref="T:System.ArgumentException">If the code length is invalid (valid lengths: <c>4</c>, <c>6</c>, <c>8</c>, or <c>10+</c>).</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.#ctor(Google.OpenLocationCode.GeoPoint,System.Int32)">
+            <summary>
+            Creates an <see cref="T:Google.OpenLocationCode.OpenLocationCode"/> object encoded from the provided geographic point coordinates
+            with the provided code length.
+            </summary>
+            <param name="point">The geographic coordinate point.</param>
+            <param name="codeLength">The desired number of digits in the code (Default: <see cref="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionNormal"/>).</param>
+            /// <exception cref="T:System.ArgumentException">If the code length is not valid.</exception>
+            <remarks>Alternative to <see cref="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.Double,System.Double,System.Int32)"/></remarks>
+        </member>
+        <member name="P:Google.OpenLocationCode.OpenLocationCode.Code">
+            <summary>
+            The code which is a valid full Open Location Code (plus code).
+            </summary>
+            <value>The string representation of the code.</value>
+        </member>
+        <member name="P:Google.OpenLocationCode.OpenLocationCode.CodeDigits">
+            <summary>
+            The digits of the full code which excludes the separator '+' character and any padding '0' characters.
+            This is useful to more concisely represent or encode a full Open Location Code
+            since the code digits can be normalized back into a valid full code.
+            </summary>
+            <example>"8FWC2300+" -> "8FWC23", "8FWC2345+G6" -> "8FWC2345G6"</example>
+            <value>The string representation of the code digits.</value>
+            <remarks>This is a nonstandard code format.</remarks>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Decode">
+            <summary>
+            Decodes this full Open Location Code into a <see cref="T:Google.OpenLocationCode.CodeArea"/> object
+            encapsulating the latitude/longitude coordinates of the area bounding box.
+            </summary>
+            <returns>The decoded CodeArea for this Open Location Code.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.IsPadded">
+            <summary>
+            Determines if this full Open Location Code is padded which is defined by <see cref="M:Google.OpenLocationCode.OpenLocationCode.IsPadded(System.String)"/>.
+            </summary>
+            <returns><c>true</c>, if this Open Location Code is a padded, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.Double,System.Double)">
+            <summary>
+            Shorten this full Open Location Code by removing four or six digits (depending on the provided reference point).
+            It removes as many digits as possible.
+            </summary>
+            <returns>A new <see cref="T:Google.OpenLocationCode.OpenLocationCode.ShortCode"/> instance shortened from this Open Location Code.</returns>
+            <param name="referenceLatitude">The reference latitude in decimal degrees.</param>
+            <param name="referenceLongitude">The reference longitude in decimal degrees.</param>
+            <exception cref="T:System.InvalidOperationException">If this code is padded (<see cref="M:Google.OpenLocationCode.OpenLocationCode.IsPadded"/>).</exception>
+            <exception cref="T:System.ArgumentException">If the reference point is too far from this code's center point.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Shorten(Google.OpenLocationCode.GeoPoint)">
+            <summary>
+            Shorten this full Open Location Code by removing four or six digits (depending on the provided reference point).
+            It removes as many digits as possible.
+            </summary>
+            <returns>A new <see cref="T:Google.OpenLocationCode.OpenLocationCode.ShortCode"/> instance shortened from this Open Location Code.</returns>
+            <param name="referencePoint">The reference point coordinates</param>
+            <exception cref="T:System.InvalidOperationException">If this code is padded (<see cref="M:Google.OpenLocationCode.OpenLocationCode.IsPadded"/>).</exception>
+            <exception cref="T:System.ArgumentException">If the reference point is too far from this code's center point.</exception>
+            <remarks>Convenient alternative to <see cref="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.Double,System.Double)"/></remarks>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Equals(System.Object)">
+            <inheritdoc />
+            <summary>
+            Determines whether the provided object is an OpenLocationCode with the same <see cref="P:Google.OpenLocationCode.OpenLocationCode.Code"/> as this OpenLocationCode.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.GetHashCode">
+            <returns>The hashcode of the <see cref="P:Google.OpenLocationCode.OpenLocationCode.Code"/> string.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ToString">
+            <returns>The <see cref="P:Google.OpenLocationCode.OpenLocationCode.Code"/> string.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.IsValid(System.String)">
+            <summary>
+            Determines if the provided string is a valid Open Location Code sequence.
+            A valid Open Location Code can be either full or short (XOR).
+            </summary>
+            <returns><c>true</c>, if the provided code is a valid Open Location Code, <c>false</c> otherwise.</returns>
+            <param name="code">The code string to check.</param>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.IsShort(System.String)">
+            <summary>
+            Determines if a code is a valid short Open Location Code.
+            <para>
+            A short Open Location Code is a sequence created by removing an even number
+            of characters from the start of a full Open Location Code. Short codes must
+            include the separator character and it must be before eight or less characters.
+            </para>
+            </summary>
+            <returns><c>true</c>, if the provided code is a valid short Open Location Code, <c>false</c> otherwise.</returns>
+            <param name="code">The code string to check.</param>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.IsFull(System.String)">
+            <summary>
+            Determines if a code is a valid full Open Location Code.
+            <para>
+            Full codes must include the separator character and it must be after eight characters.
+            </para>
+            </summary>
+            <returns><c>true</c>, if the provided code is a valid full Open Location Code, <c>false</c> otherwise.</returns>
+            <param name="code">The code string to check.</param>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.IsPadded(System.String)">
+            <summary>
+            Determines if a code is a valid padded Open Location Code.
+            <para>
+            An Open Location Code is padded when it has only 2, 4, or 6 valid digits
+            followed by zero <c>'0'</c> as padding to form a full 8 digit code.
+            If this returns <c>true</c> that the code is padded, then it is also implied
+            to be full since short codes cannot be padded.
+            </para>
+            </summary>
+            <returns><c>true</c>, if the provided code is a valid padded Open Location Code, <c>false</c> otherwise.</returns>
+            <param name="code">The code string to check.</param>
+            <remarks>
+            This is not apart of the API specification but it is useful to check if a code can
+            <see cref="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.String,System.Double,System.Double)"/> since padded codes cannot be shortened.
+            </remarks>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Encode(System.Double,System.Double,System.Int32)">
+            <summary>
+            Encodes latitude/longitude coordinates into a full Open Location Code of the provided length.
+            </summary>
+            <returns>The encoded Open Location Code.</returns>
+            <param name="latitude">The latitude in decimal degrees.</param>
+            <param name="longitude">The longitude in decimal degrees.</param>
+            <param name="codeLength">The number of digits in the code (Default: <see cref="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionNormal"/>).</param>
+            <exception cref="T:System.ArgumentException">If the code length is not valid.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Encode(Google.OpenLocationCode.GeoPoint,System.Int32)">
+            <summary>
+            Encodes geographic point coordinates into a full Open Location Code of the provided length.
+            </summary>
+            <returns>The encoded Open Location Code.</returns>
+            <param name="point">The geographic point coordinates.</param>
+            <param name="codeLength">The number of digits in the code (Default: <see cref="F:Google.OpenLocationCode.OpenLocationCode.CodePrecisionNormal"/>).</param>
+            <exception cref="T:System.ArgumentException">If the code length is not valid.</exception>
+            <remarks>Alternative too <see cref="M:Google.OpenLocationCode.OpenLocationCode.Encode(System.Double,System.Double,System.Int32)"/></remarks>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Decode(System.String)">
+            <summary>
+            Decodes a full Open Location Code into a <see cref="T:Google.OpenLocationCode.CodeArea"/> object
+            encapsulating the latitude/longitude coordinates of the area bounding box.
+            </summary>
+            <returns>The decoded CodeArea for the given location code.</returns>
+            <param name="code">The Open Location Code to be decoded.</param>
+            <exception cref="T:System.ArgumentException">If the code is not valid or not full.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.String,System.Double,System.Double)">
+            <summary>
+            Shorten a full Open Location Code by removing four or six digits (depending on the provided reference point).
+            It removes as many digits as possible.
+            </summary>
+            <returns>A new <see cref="T:Google.OpenLocationCode.OpenLocationCode.ShortCode"/> instance shortened from the the provided Open Location Code.</returns>
+            <param name="code">The Open Location Code to shorten.</param>
+            <param name="referenceLatitude">The reference latitude in decimal degrees.</param>
+            <param name="referenceLongitude">The reference longitude in decimal degrees.</param>
+            <exception cref="T:System.ArgumentException">If the code is not valid, not full, or is padded.</exception>
+            <exception cref="T:System.ArgumentException">If the reference point is too far from the code's center point.</exception>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.NormalizeCode(System.String)">
+            <summary>
+            Normalize a location code by adding the separator '+' character and any padding '0' characters
+            that are necessary to form a valid location code.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.TrimCode(System.String)">
+            <summary>
+            Trim a location code by removing the separator '+' character and any padding '0' characters
+            resulting in only the code digits.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ComputeLatitudePrecision(System.Int32)">
+            <summary>
+            Compute the latitude precision value for a given code length. Lengths &lt;= 10 have the same
+            precision for latitude and longitude, but lengths > 10 have different precisions due to the
+            grid method having fewer columns than rows.
+            </summary>
+            <remarks>Copied from the JS implementation.</remarks>
+        </member>
+        <member name="T:Google.OpenLocationCode.OpenLocationCode.ShortCode">
+            <summary>
+            A class representing a short Open Location Code which is defined by <see cref="M:Google.OpenLocationCode.OpenLocationCode.IsShort(System.String)"/>.
+            <para>
+            A ShortCode instance can be created the following ways:
+            <list type="bullet">
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.Shorten(System.Double,System.Double)"/> - Shorten a full Open Location Code</item>
+            <item><see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.#ctor(System.String)"/> - Construct for a valid short Open Location Code</item>
+            </list>
+            </para>
+            A ShortCode can be recovered back to a full Open Location Code using <see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.RecoverNearest(System.Double,System.Double)"/>
+            or using the static method <see cref="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.RecoverNearest(System.String,System.Double,System.Double)"/> (as defined by the spec).
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.#ctor(System.String)">
+            <summary>
+            Creates a <see cref="T:Google.OpenLocationCode.OpenLocationCode.ShortCode"/> object for the provided short Open Location Code.
+            Use <see cref="M:Google.OpenLocationCode.OpenLocationCode.#ctor(System.String)"/> for full codes.
+            </summary>
+            <param name="shortCode">A valid short Open Location Code.</param>
+            <exception cref="T:System.ArgumentException">If the code is null, not valid, or not short.</exception>
+        </member>
+        <member name="P:Google.OpenLocationCode.OpenLocationCode.ShortCode.Code">
+            <summary>
+            The code which is a valid short Open Location Code (plus code).
+            </summary>
+            <example>9QCJ+2VX</example>
+            <value>The string representation of the short code.</value>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.RecoverNearest(System.Double,System.Double)">
+            <returns>
+            A new OpenLocationCode instance representing a full Open Location Code
+            recovered from this (short) Open Location Code, given the reference location.
+            </returns>
+            <param name="referenceLatitude">The reference latitude in decimal degrees.</param>
+            <param name="referenceLongitude">The reference longitude in decimal degrees.</param>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.Equals(System.Object)">
+            <inheritdoc />
+            <summary>
+            Determines whether the provided object is a ShortCode with the same <see cref="P:Google.OpenLocationCode.OpenLocationCode.ShortCode.Code"/> as this ShortCode.
+            </summary>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.GetHashCode">
+            <returns>The hashcode of the <see cref="P:Google.OpenLocationCode.OpenLocationCode.ShortCode.Code"/> string.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.ToString">
+            <returns>The <see cref="P:Google.OpenLocationCode.OpenLocationCode.ShortCode.Code"/> string.</returns>
+        </member>
+        <member name="M:Google.OpenLocationCode.OpenLocationCode.ShortCode.RecoverNearest(System.String,System.Double,System.Double)">
+            <remarks>
+            Note: if shortCode is already a valid full code,
+            this will immediately return a new OpenLocationCode instance with that code
+            </remarks>
+            <returns>
+            A new OpenLocationCode instance representing a full Open Location Code
+            recovered from the provided short Open Location Code, given the reference location.
+            </returns>
+            <param name="shortCode">The valid short Open Location Code to recover</param>
+            <param name="referenceLatitude">The reference latitude in decimal degrees.</param>
+            <param name="referenceLongitude">The reference longitude in decimal degrees.</param>
+            <exception cref="T:System.ArgumentException">If the code is null or not valid.</exception>
+        </member>
+    </members>
+</doc>
